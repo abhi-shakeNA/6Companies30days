@@ -1,0 +1,43 @@
+question 2 : Overlapping rectangles https://practice.geeksforgeeks.org/problems/overlapping-rectangles1924/1/#
+class Solution {
+  public:
+    bool hori(int l1, int l2, int r1, int r2){
+        if(l1<=l2 && l2<=r1)   return 1;
+        if(l1<=r2 && r2<=r1)   return 1;
+        if(l2<=l1 && l1<=r2 && l2<=r1 && r1<=r2)    return 1;
+        return 0;
+    }
+    bool vert(int u1, int u2, int d1, int d2){
+        if(u1>=u2 && u2>=d1)   return 1;
+        if(u1>=d2 && d2>=d1)   return 1;
+        if(d2<=u1 && u1<=u2 && d2<=d1 && d1<=u2)    return 1;
+        return 0;
+    }
+    int doOverlap(int L1[], int R1[], int L2[], int R2[]) {
+        // code here
+        int l1 = L1[0];
+        int u1 = L1[1];
+        int r1 = R1[0];
+        int d1 = R1[1];
+        
+        int l2 = L2[0];
+        int u2 = L2[1];
+        int r2 = R2[0];
+        int d2 = R2[1];
+        
+        bool h = hori(l1, l2, r1, r2);
+        //if(h)   cout<<"hori ";
+        
+        bool v = vert(u1, u2, d1, d2);
+        //if(v)   cout<<"vert"<<endl;
+        
+        if(h && v)    return 1;
+        
+        return 0;
+    }
+        
+};
+
+
+
+
